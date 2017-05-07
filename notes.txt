@@ -1,0 +1,35 @@
+WSDCHD
+
+Smart appliances using wearable
+
+-------------------
+
+
+
+Created SmartApp (for amughni)
+OAuth Client ID: 912f1b19-5d4e-40c3-b0d7-b9507aabd157
+OAuth Client Secret: c40ff9a2-d663-4ac3-8935-04a8d89b77d3
+
+Created SmartApp (for cmpe295wearable - location test)
+OAuth Client ID: a865da43-f587-4ace-9201-e8aed25ba2d8
+OAuth Client Secret: 65b36098-a102-4970-a256-6799cc7baf85
+
+Created SmartApp (for cmpe295wearable - location home)
+OAuth Client ID: d6b964e1-ff14-41e7-a03a-637e6dc06a96
+OAuth Client Secret: 1a1db6a6-6f55-4f68-84b6-c10b8a9ab183
+
+
+API Token: 68317ef6-6cad-4e07-8492-99f808faef32
+API Endpoint: https://graph.api.smartthings.com/api/smartapps/installations/7a782771-043b-40ff-a3c4-c8166141000b
+
+------------------
+
+Installation Guide:
+
+https://rubyinstaller.org/downloads/
+Run in cmd: gem install sinatra
+
+--------------------
+
+SmartThings Blog URL: https://community.smartthings.com/t/smartthings-oauth-changes/35019
+Tutorial: http://docs.smartthings.com/en/latest/smartapp-web-services-developers-guide/tutorial-part2.html

@@ -1,14 +1,12 @@
 package com.access;
 
+import marytts.LocalMaryInterface;
+import marytts.MaryInterface;
+import marytts.exceptions.SynthesisException;
+import marytts.util.MaryRuntimeUtils;
+
 import javax.servlet.ServletContext;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineEvent;
-import javax.speech.Central;
-import javax.speech.synthesis.Synthesizer;
-import javax.speech.synthesis.SynthesizerModeDesc;
-import javax.speech.synthesis.SynthesizerProperties;
+import javax.sound.sampled.*;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -19,7 +17,6 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Locale;
 
 /**
  * Created by amu on 5/6/2017.
@@ -172,42 +169,46 @@ public class SmartThingsResource {
     @GET
     @Path("alexa-tts/{command}")
     public String alexaTTS(final @PathParam("command") String command) {
-        try
-        {
-            Synthesizer synthesizer = (Synthesizer) applicationContext.getAttribute("freetts-synthesizer");
+        MaryInterface mary = (MaryInterface) applicationContext.getAttribute("mary-interface-instance");
 
-            if (synthesizer == null) {
-                // set property as Kevin Dictionary
-                System.setProperty("freetts.voices",
-                        "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        if (mary == null) {
+            try {
+                System.setProperty("log.config", new File(getClass().getResource("log4j.properties").getPath()).getAbsolutePath());
 
-                // Register Engine
-                Central.registerEngineCentral
-                        ("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
+                mary = new LocalMaryInterface();
 
-                // Create a Synthesizer
-                synthesizer =
-                        Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));
+                MaryRuntimeUtils.ensureMaryStarted();
 
-                // Allocate synthesizer
-                synthesizer.allocate();
-
-                SynthesizerProperties synthesizerProperties = synthesizer.getSynthesizerProperties();
-
-                synthesizerProperties.setSpeakingRate(120.0f);
-                synthesizerProperties.setVolume(1.0f);
+                applicationContext.setAttribute("mary-interface-instance", mary);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        }
 
-            // Resume Synthesizer
-            synthesizer.resume();
-            // speaks the given text until queue is empty.
-            synthesizer.speakPlainText("Alexa! " + command, null);
-            synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        final MaryInterface finalMary = mary;
+
+        new Thread(() -> {
+            try {
+                AudioInputStream audioInputStream = finalMary.generateAudio("Alexa! " + command + "!");
+
+                Clip clip = AudioSystem.getClip();
+
+                final Clip clipClose = clip;
+
+                clip.addLineListener(event -> {
+                    if (clipClose != null && (LineEvent.Type.STOP.equals(event.getType())
+                            || LineEvent.Type.CLOSE.equals(event.getType()))) {
+                        clipClose.close();
+                    }
+                });
+
+                clip.open(audioInputStream);
+
+                clip.start();
+            } catch (SynthesisException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        }).start();
 
         return "Sending command: " + command;
     }

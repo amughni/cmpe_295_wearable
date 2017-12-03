@@ -7,6 +7,9 @@ var setupPageRan = true;
 //Encrypt Key (This should be set by the user)
 var EncryptKey = 166856;
 
+//import accessurl from external file
+
+
 //Databases
 var Access_Token = Decrypt(localStorage.getItem("token_DB"));
 var Access_Url = Decrypt(localStorage.getItem("AccessUrl_DB"));
@@ -31,6 +34,7 @@ var isOnline = navigator.onLine;
 //Access_Token = "";
 //Access_Url = "https://********************.api.smartthings.com:443/api/smartapps/"; 
 
+var AccessURL="http://24.4.244.79:8080/access_server_war/rest/smartthings/resource";
 //------------------------------------------------------------------------------------On Page Changes
 document.addEventListener("pageshow", function (e) {
 	if(isOnline==false){
@@ -64,202 +68,7 @@ document.addEventListener("pageshow", function (e) {
 //------------------------------------------------------------------------------------On Page Changes
 
 //------------------------------------------------------------------------------------Setup Page
-//function SetupPage(){
-//	if(setupPageRan==false){
-//		console.log("SetupPage() - This is the first time the user has looked at this page.");
-//		setupPageRan=true;	
-//	}else{
-//		console.log("SetupPage() - The user has seen this page before");
-//	}
-//
-//	//This is the only time the app needs to access anything outside of SmartThings.
-//	$('#submitsetup').click(function(){
-//		$.post( AuthScriptUrl+"?k="+$('#keysetup').val(), function( data ) {
-//			console.log(data);
-//				
-//			try {
-//				var obj = jQuery.parseJSON(data);
-//			} catch (e) {
-//				alert("There was an error!");
-//				console.log(e);
-//				return;
-//			}
-//				
-//			console.log(obj.TOKEN);
-//			console.log(obj.URL);
-//			localStorage.setItem("token_DB", Encrypt(obj.TOKEN));
-//			localStorage.setItem("AccessUrl_DB", Encrypt(obj.URL));
-//			Access_Token = obj.TOKEN;
-//			Access_Url = obj.URL;
-//
-//			//BUG:: tau.changePage("mainPage"); //ALL UI COMPONETS BREAK, so lets just restart for now... 
-//			alert('Setup Compleate! App will now close, please restart it!');
-//			tizen.application.getCurrentApplication().exit();
-//		});
-//	});
-//}
-//------------------------------------------------------------------------------------Setup Page
 
-//------------------------------------------------------------------------------------RoutinesPage
-//function RoutinesPage(){
-//	console.log("RoutinesPage()");
-//	if(RoutinesPageRan==true){
-//		//This page has been ran before...
-//		console.log("RoutinesPage() - This page was shown before.");		
-//		$.when(RoutinesPageGetData()).done(function() {
-//			RoutinePage_Buttons();
-//			//tau.widget.getInstance('Routines').refresh();
-//		});
-//	}else{
-//		console.log("RoutinesPage() - This is the first time the user has looked at this page.");
-//		//This is the first time the user has looked at this page!
-//		RoutinesPageRan = true;
-//		$.when(RoutinesPageGetData()).done(function() {
-//			RoutinePage_Buttons();
-//			//tau.widget.getInstance('Routines').refresh();
-//		});
-//	}
-//}
-//function RoutinesPageGetData(){
-//	console.log("RoutinesPageGetData()");
-//	$('#Routines').html(''); //Clear Routines
-//	if(routines_DB != null){ //We have switch data stored!
-//		console.log("RoutinesPageGetData() - We have routine data stored!");
-//		
-//		try {
-//			var obj = jQuery.parseJSON(routines_DB);
-//		} catch (e) {
-//			alert("There was an error! The database may be corrupted, try clearning it.");
-//			console.log(e);
-//			return;
-//		}
-//
-//		$.each(obj, function(index, element) {
-//			console.log(index);
-//			console.log(element);
-//			$('#Routines').append('\
-//				<li class="">\
-//					<div element="'+element+'" class="aRoutine ui-marquee ui-marquee-gradient">'+element+'</div>\
-//					<div class="ui-processing" style="display:none;"></div>\
-//				</li>\
-//			');
-//		});
-//		$('#Routines').append('\
-//			<li class="">\
-//				<div id="RefreshRoutineData" class="ui-marquee ui-marquee-gradient">Refresh Data</div>\
-//			</li>\
-//		');
-//		
-//		//gui stuff
-//		switcherr = document.getElementById("Routines");
-//		RoutineList_UI = tau.helper.SnapListMarqueeStyle.create(switcherr, {
-//			marqueeDelay: 0,
-//			marqueeStyle: "endToEnd"
-//		});
-//		
-//	}else{ //We couldn't find the routine database data, so lets build it.
-//		console.log("RoutinesPageGetData() - We couldn't find the routine database data, so lets build it.");
-//		$('#ProcessingMsg').html('Retrieving Routines From SmartThings');
-//		tau.changePage("processingPage"); //Switch Page
-//		console.log("RoutinesPageGetData() - Getting: " +  Access_Url + "/routines");
-//		console.log("RoutinesPageGetData() - using: " + Access_Token);
-//		$.get({
-//		    url: Access_Url + "/routines",
-//		    beforeSend: function(xhr) { 
-//		      xhr.setRequestHeader('Authorization','Bearer ' + Access_Token);
-//		    },
-//		    success: function (data) {
-//		    	console.log(data);
-//		    	data = JSON.stringify(data);
-//		    	console.log(data);
-//				localStorage.setItem("routines_DB", Encrypt(data)); //STORE THE ROUTINE DATA I NTHE DATABASE!
-//				routines_DB = data;
-//		        tau.changePage("routinesPage");
-//		    },
-//		    error: function(e){
-//		    	console.log(e);
-//		    	var Response = e.responseText;
-//				
-//		    	try {
-//		    		var obj = jQuery.parseJSON(Response);
-//				} catch (e) {
-//					//alert("There was an error!");
-//					console.log(e);
-//					//return;
-//				}
-//
-//		    	console.log(obj);
-//		    	if(obj.message){
-//		    		alert(obj.message);
-//		    	}else if(obj.error){
-//		    		alert(obj.error);
-//		    	}else{
-//		    		alert("There was a problem, could not get the routines!");
-//		    	}
-//		    	tau.changePage("routinesPage");
-//		    }
-//		});
-//	}
-//}
-//
-//function RoutinePage_Buttons(){
-//	console.log("RoutinePage_Buttons()");
-//
-//	$('#RefreshRoutineData').click(function(){
-//		console.log("RoutinePage_Buttons() - Refresh Routine Data");
-//		localStorage.setItem("routines_DB", null);
-//		routines_DB = null;
-//		$('#ProcessingMsg').html('Retrieving Routines From SmartThings');
-//		tau.changePage("processingPage");
-//		$('#Routines').html('');
-//		setTimeout(function(){ tau.changePage("routinesPage"); }, 2000);
-//	});
-//	
-//	$(".aRoutine").click(function(){
-//		console.log('.aRoutine.click');
-//		//tau.changePage("processingPage");
-//		
-//		var WhatRoutine = this;
-//		$(WhatRoutine).hide();
-//		$(WhatRoutine).parent().find('.ui-processing').show();
-//		var RoutineName = $(this).attr('element');
-//		
-//		$.get({
-//		    url: Access_Url + "/routines/"+encodeURIComponent(RoutineName),
-//		    beforeSend: function(xhr) { 
-//		      xhr.setRequestHeader('Authorization','Bearer ' + Access_Token);
-//		    },
-//		    success: function (data) {
-//		    	console.log(data);
-//		    	data = JSON.stringify(data);
-//		    	console.log(data);
-//				$(WhatRoutine).show();
-//				$(WhatRoutine).parent().find('.ui-processing').hide();
-//		    },
-//		    error: function(e){
-//		    	console.log(e);
-//		    	var Response = e.responseText;
-//			try {
-//				var obj = jQuery.parseJSON(Response);
-//			} catch (e) {
-//				//alert("There was an error!");
-//				console.log(e);
-//				//return;
-//			}
-//		    	console.log(obj);
-//		    	if(obj.message){
-//		    		alert(obj.message);
-//		    	}else if(obj.error){
-//		    		alert(obj.error);
-//		    	}else{
-//		    		alert("There was a problem, could not execute the routine!");
-//		    	}
-//				$(WhatRoutine).show();
-//				$(WhatRoutine).parent().find('.ui-processing').hide();
-//		    }
-//		});
-//	});
-//}
 //------------------------------------------------------------------------------------RoutinesPage
 
 //------------------------------------------------------------------------------------Main Page
@@ -328,7 +137,7 @@ function MainPage(){
 //------------------------------------------------------------------------------------Main Page
 
 //------------------------------------------------------------------------------------Switch Page
-function SwitchPage(){	
+function SwitchPage(){
 //	console.log("SwitchPage()");
 //	if(SwitchPageRan==true){
 //		//This page has been ran before...
@@ -342,115 +151,77 @@ function SwitchPage(){
 //		//This is the first time the user has looked at this page!
 //		SwitchPageRan = true;
 //		$.when(SwitchPageGetData()).done(function() {
-			SwitchPage_Buttons();						
+		SwitchPageGetData();	
 //		});
 //	}
 }
 
 function SwitchPageGetData(){
-	console.log("SwitchPageGetData()");
-	$('#Switches').html(''); //Clear Switches
-	if(switches_DB != null){ //We have switch data stored!
-		console.log("We have switch data stored!");
-		try {
-			var obj = jQuery.parseJSON(switches_DB);
-		} catch (e) {
-			alert("There was an error! The database may be corrupted, try clearning it.");
-			console.log(e);
-			return;
-		}
-		
-		$.each(obj, function(index, element) {
-			console.log(index);
-			console.log(element);
-			
-			var id = element.id;
-			var label = element.label;
-			var value = element.value;
-			var type = element.type;					    
-			var checked = "";
-			if(value=="on"){ var checked = "checked"; }			        	
-			$('#Switches').append('\
-				<li class="li-has-checkbox">\
-					<div class="ui-marquee ui-marquee-gradient marquee">'+label+'</div>\
-					<input class="aswitch" deviceid="'+id+'" type="checkbox" ' + checked + '/>\
-					<div class="ui-processing" style="display:none;"></div>\
-				</li>\
-			');
-		});
-		$('#Switches').append('\
-			<li class="">\
-				<div id="RefreshSwitchData" class="ui-marquee ui-marquee-gradient marquee">Refresh Data</div>\
-			</li>\
-		');
-
-		//fancy GUI stuff
-		switcherr = document.getElementById("Switches");
-		SwitchList_UI = tau.helper.SnapListMarqueeStyle.create(switcherr, {
-			marqueeDelay: 0,
-			marqueeStyle: "endToEnd"
-		});
-		
-	}else{ //We couldn't find the switches database data, so lets build it.
-		console.log("We couldn't find the switches database data, so lets build it.");
-		$('#ProcessingMsg').html('Retrieving Switches From SmartThings');
-		tau.changePage("processingPage");
-		
-		console.log("Getting: " +  Access_Url + "/switches");
-		console.log("using: " + Access_Token);
-		
-		$.get({
-		    url: Access_Url + "/switches",
-		    beforeSend: function(xhr) { 
-		      xhr.setRequestHeader('Authorization','Bearer ' + Access_Token);
-		    },
-		    success: function (data) {
-		    	console.log(data);
-		    	data = JSON.stringify(data);
-		    	console.log(data);
-				localStorage.setItem("switches_DB", Encrypt(data)); //STORE THE SWITCH DATA IN THE DATABASE!
-				switches_DB = data;
-		        tau.changePage("switchesPage");
-		    },
-		    error: function(e){
-		    	console.log(e);
-		    	var Response = e.responseText;
-		    	
-				try {
-					var obj = jQuery.parseJSON(Response);
-				} catch (e) {
-					alert("There was an error!");
-					console.log(e);
-					return;
-				}		    	
-		  
-		    	console.log(obj);
-		    	if(obj.message){
-		    		alert(obj.message);
-		    	}else if(obj.error){
-		    		alert(obj.error);
-		    	}else{
-		    		alert("There was a problem, could not get switches!");
-		    	}
-		    	tau.changePage("switchesPage");
-		    }
-		});
+	console.log("inside switchpagetdata");
+	
+	if($('#Switches') == null) {
+		alert("Switches element not found.");
+		return;
 	}
-}
+	
+	$('#Switches').html('');
+/*	var self = this;
 
-function SwitchPage_Buttons(){
-	console.log("SwitchPage_Buttons()");
-
-	$('#RefreshSwitchData').click(function(){
-		console.log("Refresh Switch Data");
-		localStorage.setItem("switches_DB", null);
-		switches_DB = null;
-		$('#ProcessingMsg').html('Retrieving Switches From SmartThings');
-		tau.changePage("processingPage");
-		$('#Switches').html('');
-		setTimeout(function(){ tau.changePage("switchesPage"); }, 2000); //:)
+	$('#switchForm').submit();
+*/	
+//	$.get("http://24.4.244.79:8080/access_server_war/rest/smartthings/resource/switches",function(data){
+//		self.AppendMyData(data[0].name);
+//	});
+	
+	$.ajax({
+		type: "GET"	,
+		url: AccessURL + "/switches",
+		success:function(data){
+			$("#Switches").append ("<li><button id='switch1' + >" + data[0].name + "</button></li>");
+			$("#Switches").append ("<li id='status1'>" + data[0].value + "</li>");
+			
+			
+			
+			 $('#switch1').click(function() {
+				 
+					Switch();
+					
+				});		
+			
+		}
 	});
+ }
 
+ function getNextSwitchValue(current) {
+	 
+		if(current == "on")
+			return "off";
+		else 
+			return "on";
+		
+ }
+
+ function Switch() {
+	 console.log("Old value:" + $('#status1').text());
+	 var value = getNextSwitchValue($('#status1').text());
+	 $.ajax({
+			type: "GET"	,
+			url: AccessURL + "/switches/" + value,
+			
+			success:function(data){
+				if(data) {
+						console.log("New value:" + value);
+						$("#status1").text(value);
+						
+					
+				}
+			}
+		});
+ }
+ 
+
+ function SwitchPage_Buttons(){
+	console.log("SwitchPage_Buttons()");
 	$(".aswitch").change(function(){
 		console.log('.aswitch click called');
 		//tau.changePage("processingPage");

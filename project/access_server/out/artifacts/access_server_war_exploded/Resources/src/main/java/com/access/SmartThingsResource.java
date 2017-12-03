@@ -1,18 +1,25 @@
 package com.access;
 
+import javax.servlet.ServletContext;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
+import javax.speech.Central;
+import javax.speech.synthesis.Synthesizer;
+import javax.speech.synthesis.SynthesizerModeDesc;
+import javax.speech.synthesis.SynthesizerProperties;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Locale;
 
 /**
  * Created by amu on 5/6/2017.
@@ -23,6 +30,8 @@ public class SmartThingsResource {
     private static String CLIENT_ID;
     private static String BEARER;
     private static String AUTHORIZATION_SECRET_KEY;
+
+    @Context private ServletContext applicationContext;
 
     public void SmartThingsResource() {
         loadDefaults();
@@ -152,6 +161,57 @@ public class SmartThingsResource {
         return false;
     }
 
+
+    /**
+     * Method handling HTTP PUT requests. The returned object will be sent
+     * to the client as "application/json" media type.
+     *
+     * @request
+     * @return String that will be returned as a application/json response.
+     */
+    @GET
+    @Path("alexa-tts/{command}")
+    public String alexaTTS(final @PathParam("command") String command) {
+        try
+        {
+            Synthesizer synthesizer = (Synthesizer) applicationContext.getAttribute("freetts-synthesizer");
+
+            if (synthesizer == null) {
+                // set property as Kevin Dictionary
+                System.setProperty("freetts.voices",
+                        "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+
+                // Register Engine
+                Central.registerEngineCentral
+                        ("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
+
+                // Create a Synthesizer
+                synthesizer =
+                        Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));
+
+                // Allocate synthesizer
+                synthesizer.allocate();
+
+                SynthesizerProperties synthesizerProperties = synthesizer.getSynthesizerProperties();
+
+                synthesizerProperties.setSpeakingRate(120.0f);
+                synthesizerProperties.setVolume(1.0f);
+            }
+
+            // Resume Synthesizer
+            synthesizer.resume();
+            // speaks the given text until queue is empty.
+            synthesizer.speakPlainText("Alexa! " + command, null);
+            synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return "Sending command: " + command;
+    }
+
     /**
      * Method handling HTTP PUT requests. The returned object will be sent
      * to the client as "application/json" media type.
@@ -164,57 +224,43 @@ public class SmartThingsResource {
     public String alexa(final @PathParam("command") String command) {
         StringBuilder outputBuilder = new StringBuilder();
 
-        String path = SmartThingsResource.class.getClassLoader().getResource("").getPath();
+        URL resource = SmartThingsResource.class.getClassLoader().getResource(command + ".WAV");
 
-        File audioFile = new File(path + command + ".WAV").getAbsoluteFile();
+        if (resource == null) return "Command not found!";
 
-        outputBuilder.append(audioFile.getAbsolutePath());
-        outputBuilder.append("<br>exists: " + audioFile.exists());
-        outputBuilder.append("<br>isFile: " + audioFile.isFile());
-        outputBuilder.append("<br>canRead: " + audioFile.canRead());
-        outputBuilder.append("<br>canRun: " + audioFile.canExecute());
+        String path = resource.getPath();
 
-        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-            Clip clip = null;
+        File audioFile = new File(path).getAbsoluteFile();
 
-            try {
+        outputBuilder.append(audioFile.getAbsolutePath()).append("<br>exists: ").append(audioFile.exists())
+                .append("<br>isFile: ").append(audioFile.isFile()).append("<br>canRead: ")
+                .append(audioFile.canRead());
 
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
 
-                clip = AudioSystem.getClip();
+            Clip clip = AudioSystem.getClip();
 
-                final Clip clipClose = clip;
+            final Clip clipClose = clip;
 
-                clip.addLineListener(event -> {
-                    if (clipClose != null && (LineEvent.Type.STOP.equals(event.getType()) || LineEvent.Type.CLOSE.equals(event.getType()))) {
-                        clipClose.close();
-                    }
-                });
+            clip.addLineListener(event -> {
+                if (clipClose != null && (LineEvent.Type.STOP.equals(event.getType())
+                        || LineEvent.Type.CLOSE.equals(event.getType()))) {
+                    clipClose.close();
+                }
+            });
 
-                outputBuilder.append("<br>Gotten clip");
+            outputBuilder.append("<br>Gotten clip");
 
-                clip.open(audioInputStream);
+            clip.open(audioInputStream);
 
-                outputBuilder.append("<br>Opened clip");
+            outputBuilder.append("<br>Opened clip");
 
-                clip.start();
+            clip.start();
 
-                outputBuilder.append("<br>Started clip");
-            }
-            catch (Exception e) {
-                outputBuilder.append(e.getMessage());
-            } 
-        } else {
-            try {
-                outputBuilder.append("<br>Running aplay " + audioFile.getAbsolutePath());
-
-                Process process = Runtime.getRuntime().exec("aplay " + audioFile.getAbsolutePath());
-                process.waitFor();
-            } catch (IOException e) {
-                outputBuilder.append("<br>" + e.getMessage());
-            } catch (InterruptedException e) {
-                outputBuilder.append("<br>" + e.getMessage());
-            }
+            outputBuilder.append("<br>Started clip");
+        } catch (Exception e) {
+            outputBuilder.append(e.getMessage());
         }
         return outputBuilder.toString();
     }

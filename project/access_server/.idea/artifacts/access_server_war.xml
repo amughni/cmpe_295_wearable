@@ -3,6 +3,18 @@
     <output-path>$PROJECT_DIR$/out/artifacts/access_server_war</output-path>
     <root id="archive" name="access_server_war.war">
       <element id="artifact" artifact-name="access_server:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: net.sf.sociaal:freetts:1.2.2" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:cmu_time_awb:1.0" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:cmu_us_kal:1.0" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:cmudict04:1.0" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:cmulex:1.0" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:cmutimelex:1.0" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:en_us:1.0" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.freetts:freetts:1.0" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

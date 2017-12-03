@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.mc:da-monitor:war:SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mc/da-monitor/SNAPSHOT/da-monitor-SNAPSHOT.war!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mc/da-monitor/SNAPSHOT/da-monitor-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mc/da-monitor/SNAPSHOT/da-monitor-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

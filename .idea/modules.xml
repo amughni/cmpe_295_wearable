@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:/Git/projects/cli-app-manager-launcher-win/CliAppManagerLauncher.iml" filepath="C:/Git/projects/cli-app-manager-launcher-win/CliAppManagerLauncher.iml" />
+      <module fileurl="file://C:/Git/projects/build-common/dap-engine/DAP-engine.iml" filepath="C:/Git/projects/build-common/dap-engine/DAP-engine.iml" group="DAP-engine and modules" />
+      <module fileurl="file://C:/Git/projects/dap-engine/MAM.iml" filepath="C:/Git/projects/dap-engine/MAM.iml" group="DAP-engine and modules" />
+      <module fileurl="file://C:/Git/projects/access-server/access-server.iml" filepath="C:/Git/projects/access-server/access-server.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/access-server-app/access-server-app.iml" filepath="C:/Git/projects/build-common/access-server-app/access-server-app.iml" />
+      <module fileurl="file://C:/Git/projects/access-server-web/access-server-web.iml" filepath="C:/Git/projects/access-server-web/access-server-web.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/access-server-web-api/access-server-web-api.iml" filepath="C:/Git/projects/access-server-web-api/access-server-web-api.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/access-server-web-app/access-server-web-app.iml" filepath="C:/Git/projects/build-common/access-server-web-app/access-server-web-app.iml" />
+      <module fileurl="file://C:/Git/projects/build-common/all.iml" filepath="C:/Git/projects/build-common/all.iml" />
+      <module fileurl="file://C:/Git/projects/build-common/app-sign/app-sign-app.iml" filepath="C:/Git/projects/build-common/app-sign/app-sign-app.iml" />
+      <module fileurl="file://C:/Git/projects/build-common/build-all/build-all.iml" filepath="C:/Git/projects/build-common/build-all/build-all.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/classic-device-api/classic-device-api.iml" filepath="C:/Git/projects/classic-device-api/classic-device-api.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/classic-device-api-app/classic-device-api-app.iml" filepath="C:/Git/projects/build-common/classic-device-api-app/classic-device-api-app.iml" />
+      <module fileurl="file://C:/Git/projects/classic-ui/classic-ui.iml" filepath="C:/Git/projects/classic-ui/classic-ui.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/client-common/client-common.iml" filepath="C:/Git/projects/client-common/client-common.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/command-line-app/command-line-app.iml" filepath="C:/Git/projects/build-common/command-line-app/command-line-app.iml" />
+      <module fileurl="file://C:/Git/projects/command-line/commandline.iml" filepath="C:/Git/projects/command-line/commandline.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/internal/da-billing/da-billing.iml" filepath="C:/Git/projects/internal/da-billing/da-billing.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/internal/da-carrier-charger/da-carrier-charger.iml" filepath="C:/Git/projects/internal/da-carrier-charger/da-carrier-charger.iml" />
+      <module fileurl="file://C:/Git/projects/da-core/da-core.iml" filepath="C:/Git/projects/da-core/da-core.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-ensemble/da-ensemble.iml" filepath="C:/Git/projects/da-ensemble/da-ensemble.iml" group="da-ensemble and modules" />
+      <module fileurl="file://C:/Git/projects/da-ensemble/da-ensemble-client/da-ensemble-client.iml" filepath="C:/Git/projects/da-ensemble/da-ensemble-client/da-ensemble-client.iml" group="da-ensemble and modules" />
+      <module fileurl="file://C:/Git/projects/da-ensemble/da-ensemble-entity/da-ensemble-entity.iml" filepath="C:/Git/projects/da-ensemble/da-ensemble-entity/da-ensemble-entity.iml" group="da-ensemble and modules" />
+      <module fileurl="file://C:/Git/projects/da-ensemble/da-ensemble-server/da-ensemble-server.iml" filepath="C:/Git/projects/da-ensemble/da-ensemble-server/da-ensemble-server.iml" group="da-ensemble and modules" />
+      <module fileurl="file://C:/Git/projects/da-ensemble/da-ensemble-server-api/da-ensemble-server-api.iml" filepath="C:/Git/projects/da-ensemble/da-ensemble-server-api/da-ensemble-server-api.iml" group="da-ensemble and modules" />
+      <module fileurl="file://C:/Git/projects/da-ensemble/da-ensemble-server-session-manager/da-ensemble-server-session-manager.iml" filepath="C:/Git/projects/da-ensemble/da-ensemble-server-session-manager/da-ensemble-server-session-manager.iml" />
+      <module fileurl="file://C:/Git/projects/da-jaxb/da-jaxb.iml" filepath="C:/Git/projects/da-jaxb/da-jaxb.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/internal/device-hawk/da-monitor.iml" filepath="C:/Git/projects/internal/device-hawk/da-monitor.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/da-server/da-server.iml" filepath="C:/Git/projects/da-server/da-server.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-server/da-server-jar/da-server-jar.iml" filepath="C:/Git/projects/da-server/da-server-jar/da-server-jar.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-server/da-server-web/da-server-web.iml" filepath="C:/Git/projects/da-server/da-server-web/da-server-web.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-util/da-util.iml" filepath="C:/Git/projects/da-util/da-util.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest/da-webtest.iml" filepath="C:/Git/projects/da-webtest/da-webtest.iml" group="da-webtest and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest/da-webtest-client/da-webtest-client.iml" filepath="C:/Git/projects/da-webtest/da-webtest-client/da-webtest-client.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest/da-webtest-entity/da-webtest-entity.iml" filepath="C:/Git/projects/da-webtest/da-webtest-entity/da-webtest-entity.iml" group="da-webtest and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest/da-webtest-examples/da-webtest-examples.iml" filepath="C:/Git/projects/da-webtest/da-webtest-examples/da-webtest-examples.iml" group="da-webtest and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest-proxy/da-webtest-proxy.iml" filepath="C:/Git/projects/da-webtest-proxy/da-webtest-proxy.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest/da-webtest-server/da-webtest-server.iml" filepath="C:/Git/projects/da-webtest/da-webtest-server/da-webtest-server.iml" group="da-webtest and modules" />
+      <module fileurl="file://C:/Git/projects/da-webtest/da-webtest-server-api/da-webtest-server-api.iml" filepath="C:/Git/projects/da-webtest/da-webtest-server-api/da-webtest-server-api.iml" group="da-webtest and modules" />
+      <module fileurl="file://C:/Git/projects/da-weld-core/da-weld-core.iml" filepath="C:/Git/projects/da-weld-core/da-weld-core.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/da-weld-extension/da-weld-extension.iml" filepath="C:/Git/projects/da-weld-extension/da-weld-extension.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/da-wrapper/da-wrapper.iml" filepath="C:/Git/projects/da-wrapper/da-wrapper.iml" group="studio-all and modules" />
+      <module fileurl="file://C:/Git/projects/device-access/device-access.iml" filepath="C:/Git/projects/device-access/device-access.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/device-access-premium/device-access-premium.iml" filepath="C:/Git/projects/device-access-premium/device-access-premium.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/device-bridge/device-bridge.iml" filepath="C:/Git/projects/device-bridge/device-bridge.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/device-discovery/device-discovery.iml" filepath="C:/Git/projects/device-discovery/device-discovery.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/device-manager/device-manager.iml" filepath="C:/Git/projects/device-manager/device-manager.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/device-monitor/device-monitor.iml" filepath="C:/Git/projects/build-common/device-monitor/device-monitor.iml" />
+      <module fileurl="file://C:/Git/projects/ensemble-admin/ensemble-admin.iml" filepath="C:/Git/projects/ensemble-admin/ensemble-admin.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/ensemble-admin-launcher-win32/ensemble-admin-launcher-win32.iml" filepath="C:/Git/projects/ensemble-admin-launcher-win32/ensemble-admin-launcher-win32.iml" group="ensemble-app and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/ensemble-app/ensemble-app.iml" filepath="C:/Git/projects/build-common/ensemble-app/ensemble-app.iml" group="ensemble-app and modules" />
+      <module fileurl="file://C:/Git/projects/ensemble-bridge-commands/ensemble-bridge-commands.iml" filepath="C:/Git/projects/ensemble-bridge-commands/ensemble-bridge-commands.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/ensemble-device-session/ensemble-device-session.iml" filepath="C:/Git/projects/ensemble-device-session/ensemble-device-session.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/ensemble-server/ensemble-server.iml" filepath="C:/Git/projects/ensemble-server/ensemble-server.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/ensemble-server/ensemble-server-app.iml" filepath="C:/Git/projects/build-common/ensemble-server/ensemble-server-app.iml" />
+      <module fileurl="file://C:/Git/projects/execution-server/execution-server.iml" filepath="C:/Git/projects/execution-server/execution-server.iml" group="test-server-app and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/execution-server/execution-server-app.iml" filepath="C:/Git/projects/build-common/execution-server/execution-server-app.iml" />
+      <module fileurl="file://C:/Git/projects/build-common/images/images.iml" filepath="C:/Git/projects/build-common/images/images.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/latency/latency.iml" filepath="C:/Git/projects/latency/latency.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/monitor-server/monitor-server.iml" filepath="C:/Git/projects/monitor-server/monitor-server.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/monitor-server/monitor-server-app.iml" filepath="C:/Git/projects/build-common/monitor-server/monitor-server-app.iml" />
+      <module fileurl="file://C:/Git/projects/netmessage/netmessages.iml" filepath="C:/Git/projects/netmessage/netmessages.iml" />
+      <module fileurl="file://C:/Git/projects/notification-server/notification-server.iml" filepath="C:/Git/projects/notification-server/notification-server.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/payment-api/payment-api.iml" filepath="C:/Git/projects/payment-api/payment-api.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/phonescout/phonescout.iml" filepath="C:/Git/projects/phonescout/phonescout.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/portal/portal.iml" filepath="C:/Git/projects/portal/portal.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/scripting-api/scripting-api.iml" filepath="C:/Git/projects/scripting-api/scripting-api.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/scripting-ui/scripting-ui.iml" filepath="C:/Git/projects/scripting-ui/scripting-ui.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/scriptrunner/scriptrunner.iml" filepath="C:/Git/projects/scriptrunner/scriptrunner.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/server-common/server-common.iml" filepath="C:/Git/projects/server-common/server-common.iml" group="da-server and modules" />
+      <module fileurl="file://C:/Git/projects/service-runner/service-runner.iml" filepath="C:/Git/projects/service-runner/service-runner.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/services/services.iml" filepath="C:/Git/projects/services/services.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/services-app/services-app.iml" filepath="C:/Git/projects/build-common/services-app/services-app.iml" />
+      <module fileurl="file://C:/Git/projects/studio/studio.iml" filepath="C:/Git/projects/studio/studio.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/studio-all/studio-all.iml" filepath="C:/Git/projects/build-common/studio-all/studio-all.iml" group="studio-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/studio-all-dev/studio-all-dev.iml" filepath="C:/Git/projects/build-common/studio-all-dev/studio-all-dev.iml" />
+      <module fileurl="file://C:/Git/projects/build-common/studio-bootstrap/studio-bootstrap.iml" filepath="C:/Git/projects/build-common/studio-bootstrap/studio-bootstrap.iml" />
+      <module fileurl="file://C:/Git/projects/studio-launcher-win32/studio-launcher-win32.iml" filepath="C:/Git/projects/studio-launcher-win32/studio-launcher-win32.iml" group="studio-premium and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/studio-premium/studio-premium.iml" filepath="C:/Git/projects/build-common/studio-premium/studio-premium.iml" group="studio-premium and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/studio-testcenter/studio-testcenter.iml" filepath="C:/Git/projects/build-common/studio-testcenter/studio-testcenter.iml" />
+      <module fileurl="file://C:/Git/projects/test-server/test-server.iml" filepath="C:/Git/projects/test-server/test-server.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/build-common/test-server/test-server-app.iml" filepath="C:/Git/projects/build-common/test-server/test-server-app.iml" group="test-server-app and modules" />
+      <module fileurl="file://C:/Git/projects/ui-framework/ui-framework.iml" filepath="C:/Git/projects/ui-framework/ui-framework.iml" group="build-all and modules" />
+      <module fileurl="file://C:/Git/projects/xuggler-wrapper/xuggler-wrapper.iml" filepath="C:/Git/projects/xuggler-wrapper/xuggler-wrapper.iml" group="build-all and modules" />
+    </modules>
+  </component>
+</project>

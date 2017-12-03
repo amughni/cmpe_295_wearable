@@ -1,6 +1,5 @@
 package com.access;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -16,10 +15,14 @@ public class PropertyLoader {
 
         try {
 
-            String filename = "config.properties";
+            String filename = "com//access//config.properties";
+
             input = PropertyLoader.class.getClassLoader().getResourceAsStream(filename);
 
             // load a properties file
+            if(input == null)
+                return null;
+
             prop.load(input);
 
             return prop;

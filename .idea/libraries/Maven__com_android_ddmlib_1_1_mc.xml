@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.android:ddmlib:1.1.mc">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/android/ddmlib/1.1.mc/ddmlib-1.1.mc.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/android/ddmlib/1.1.mc/ddmlib-1.1.mc-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/android/ddmlib/1.1.mc/ddmlib-1.1.mc-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

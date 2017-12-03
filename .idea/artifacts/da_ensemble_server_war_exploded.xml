@@ -1,0 +1,118 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="da-ensemble-server:war exploded">
+    <output-path>C:/Git/projects/da-ensemble/da-ensemble-server/target/da-ensemble-server</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="da-ensemble-server" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="da-core-9.0.jar">
+            <element id="module-output" name="da-core" />
+          </element>
+          <element id="library" level="project" name="Maven: javazoom.jl:jlayer:1.0.1" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.tritonus:tritonus_share:0.3.6" />
+          <element id="library" level="project" name="Maven: javazoom.spi:mp3spi:1.9.5" />
+          <element id="library" level="project" name="Maven: net.sf.scannotation:scannotation:1.0.2" />
+          <element id="library" level="project" name="Maven: javassist:javassist:3.6.0.GA" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+          <element id="library" level="project" name="Maven: org.mobicents.external.tritonus:tritonus_remaining:0.3.6" />
+          <element id="library" level="project" name="Maven: org.xiph:speex:1.0" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.2" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.4" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: org.swinglabs:swingx:0.9" />
+          <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235" />
+          <element id="library" level="project" name="Maven: org.eclipse.osgi:org.eclipse.osgi.services:3.3.1" />
+          <element id="library" level="project" name="Maven: javax.media:jmf:2.1.1e" />
+          <element id="library" level="project" name="Maven: org.rxtx:rxtx:2.1.7" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:20.0" />
+          <element id="library" level="project" name="Maven: com.objectplanet.image:PngEncoder:2.0.2" />
+          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.7.2" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.3" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.6" />
+          <element id="library" level="project" name="Maven: org.json:json:20090211" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.5" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="Maven: org.ini4j:ini4j:0.5.2" />
+          <element id="library" level="project" name="Maven: com.googlecode.plist:dd-plist:1.8" />
+          <element id="library" level="project" name="Maven: joda-time:joda-time:2.2" />
+          <element id="archive" name="device-bridge-9.0.jar">
+            <element id="module-output" name="device-bridge" />
+          </element>
+          <element id="library" level="project" name="Maven: org:java-lzo:1.0" />
+          <element id="library" level="project" name="Maven: org:jfastlz:1.0" />
+          <element id="library" level="project" name="Maven: com.android:ddmlib:1.1.mc" />
+          <element id="library" level="project" name="Maven: com.palm:nova-installer:1.0" />
+          <element id="library" level="project" name="Maven: net.sf.bluecove:bluecove:2.1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:3.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-asm:3.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: com.coldcore:coloradoftp:1.25" />
+          <element id="library" level="project" name="Maven: com.coldcore.coloradoftp.plugin:intellipack:1.13" />
+          <element id="library" level="project" name="Maven: com.jcraft:jsch:0.1.41" />
+          <element id="archive" name="scripting-api-9.0.jar">
+            <element id="module-output" name="scripting-api" />
+          </element>
+          <element id="archive" name="client-common-9.0.jar">
+            <element id="module-output" name="client-common" />
+          </element>
+          <element id="archive" name="da-webtest-client-9.0.jar">
+            <element id="module-output" name="da-webtest-client" />
+          </element>
+          <element id="archive" name="da-util-9.0.jar">
+            <element id="module-output" name="da-util" />
+          </element>
+          <element id="library" level="project" name="Maven: net.sourceforge.nekohtml:nekohtml:1.9.18" />
+          <element id="library" level="project" name="Maven: xerces:xercesImpl:2.10.0" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.4.01" />
+          <element id="archive" name="da-webtest-server-api-9.0.jar">
+            <element id="module-output" name="da-webtest-server-api" />
+          </element>
+          <element id="archive" name="da-webtest-entity-9.0.jar">
+            <element id="module-output" name="da-webtest-entity" />
+          </element>
+          <element id="library" level="project" name="Maven: javaparser:javaparser:1.0.7" />
+          <element id="library" level="project" name="Maven: org.apache.ant:ant:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.ant:ant-launcher:1.8.1" />
+          <element id="library" level="project" name="Maven: com.sun:jdk-tools:1.8" />
+          <element id="library" level="project" name="Maven: commons-cli:commons-cli:1.2" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.2.3" />
+          <element id="library" level="project" name="Maven: org.eclipse.wst.xml.xpath2:processor:2.1.101" />
+          <element id="library" level="project" name="Maven: java_cup:runtime:0.10.0" />
+          <element id="archive" name="ensemble-bridge-commands-9.0.jar">
+            <element id="module-output" name="ensemble-bridge-commands" />
+          </element>
+          <element id="archive" name="da-ensemble-entity-1.0.jar">
+            <element id="module-output" name="da-ensemble-entity" />
+          </element>
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.0.5" />
+          <element id="archive" name="da-ensemble-server-api-1.0.jar">
+            <element id="module-output" name="da-ensemble-server-api" />
+          </element>
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.1.2" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.1.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.0.5" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.0.5" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.0.5" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jaxrs:2.3.4.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:jaxrs-api:2.3.4.Final" />
+          <element id="library" level="project" name="Maven: org.scannotation:scannotation:1.0.3" />
+          <element id="library" level="project" name="Maven: javax.annotation:jsr250-api:1.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
+          <element id="library" level="project" name="Maven: commons-httpclient:commons-httpclient:3.1" />
+          <element id="library" level="project" name="Maven: net.jcip:jcip-annotations:1.0" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jaxb-provider:2.3.4.Final" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.6" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.4" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.4" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="C:/Git/projects/da-ensemble/da-ensemble-server/target/da-ensemble-server/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="da-ensemble-server/web/Web" />
+    </root>
+  </artifact>
+</component>

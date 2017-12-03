@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="da-webtest-proxy:war">
+    <output-path>C:/Git/projects/da-webtest-proxy/target</output-path>
+    <root id="archive" name="root.war">
+      <element id="artifact" artifact-name="da-webtest-proxy:war exploded" />
+    </root>
+  </artifact>
+</component>

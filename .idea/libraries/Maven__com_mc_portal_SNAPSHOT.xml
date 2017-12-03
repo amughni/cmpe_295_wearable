@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.mc:portal:SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mc/portal/SNAPSHOT/portal-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mc/portal/SNAPSHOT/portal-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mc/portal/SNAPSHOT/portal-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

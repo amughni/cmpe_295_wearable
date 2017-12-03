@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="da-billing:war">
+    <output-path>C:/Git/projects/internal/da-billing/target</output-path>
+    <root id="archive" name="com.mc.da-billing.war">
+      <element id="artifact" artifact-name="da-billing:war exploded" />
+    </root>
+  </artifact>
+</component>

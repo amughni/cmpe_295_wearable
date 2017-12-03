@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="access-server" />
+        <module name="access-server-web" />
+        <module name="access-server-web-api" />
+        <module name="classic-device-api" />
+        <module name="classic-ui" />
+        <module name="CliAppManagerLauncher" />
+        <module name="client-common" />
+        <module name="commandline" />
+        <module name="da-billing" />
+        <module name="da-carrier-charger" />
+        <module name="da-core" />
+        <module name="da-ensemble-client" />
+        <module name="da-ensemble-entity" />
+        <module name="da-ensemble-server" />
+        <module name="da-ensemble-server-api" />
+        <module name="da-ensemble-server-session-manager" />
+        <module name="da-jaxb" />
+        <module name="da-monitor" />
+        <module name="da-server-jar" />
+        <module name="da-server-web" />
+        <module name="da-util" />
+        <module name="da-webtest-client" />
+        <module name="da-webtest-entity" />
+        <module name="da-webtest-examples" />
+        <module name="da-webtest-proxy" />
+        <module name="da-webtest-server" />
+        <module name="da-webtest-server-api" />
+        <module name="da-weld-core" />
+        <module name="da-weld-extension" />
+        <module name="da-wrapper" />
+        <module name="device-access" />
+        <module name="device-access-premium" />
+        <module name="device-bridge" />
+        <module name="device-discovery" />
+        <module name="device-manager" />
+        <module name="ensemble-admin" />
+        <module name="ensemble-admin-launcher-win32" />
+        <module name="ensemble-bridge-commands" />
+        <module name="ensemble-device-session" />
+        <module name="ensemble-server" />
+        <module name="execution-server" />
+        <module name="images" />
+        <module name="latency" />
+        <module name="MAM" />
+        <module name="monitor-server" />
+        <module name="netmessages" />
+        <module name="notification-server" />
+        <module name="payment-api" />
+        <module name="phonescout" />
+        <module name="portal" />
+        <module name="scripting-api" />
+        <module name="scripting-ui" />
+        <module name="scriptrunner" />
+        <module name="server-common" />
+        <module name="service-runner" />
+        <module name="services" />
+        <module name="studio" />
+        <module name="studio-launcher-win32" />
+        <module name="test-server" />
+        <module name="ui-framework" />
+        <module name="xuggler-wrapper" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="access-server" target="1.6" />
+      <module name="access-server-app" target="1.5" />
+      <module name="access-server-web" target="1.6" />
+      <module name="access-server-web-api" target="1.6" />
+      <module name="access-server-web-app" target="1.5" />
+      <module name="all" target="1.5" />
+      <module name="app-sign-app" target="1.5" />
+      <module name="build-all" target="1.5" />
+      <module name="classic-device-api" target="1.6" />
+      <module name="classic-device-api-app" target="1.5" />
+      <module name="classic-ui" target="1.6" />
+      <module name="CliAppManagerLauncher" target="1.6" />
+      <module name="client-common" target="1.6" />
+      <module name="command-line-app" target="1.5" />
+      <module name="commandline" target="1.6" />
+      <module name="da-billing" target="1.6" />
+      <module name="da-carrier-charger" target="1.6" />
+      <module name="da-core" target="1.6" />
+      <module name="da-ensemble" target="1.5" />
+      <module name="da-ensemble-client" target="1.6" />
+      <module name="da-ensemble-entity" target="1.6" />
+      <module name="da-ensemble-server" target="1.6" />
+      <module name="da-ensemble-server-api" target="1.6" />
+      <module name="da-ensemble-server-session-manager" target="1.6" />
+      <module name="da-jaxb" target="1.6" />
+      <module name="da-monitor" target="1.6" />
+      <module name="da-server" target="1.5" />
+      <module name="da-server-jar" target="1.6" />
+      <module name="da-server-web" target="1.6" />
+      <module name="da-util" target="1.6" />
+      <module name="da-webtest" target="1.5" />
+      <module name="da-webtest-client" target="1.6" />
+      <module name="da-webtest-entity" target="1.6" />
+      <module name="da-webtest-examples" target="1.6" />
+      <module name="da-webtest-proxy" target="1.6" />
+      <module name="da-webtest-server" target="1.6" />
+      <module name="da-webtest-server-api" target="1.6" />
+      <module name="da-weld-core" target="1.6" />
+      <module name="da-weld-extension" target="1.6" />
+      <module name="da-wrapper" target="1.6" />
+      <module name="DAP-engine" target="1.5" />
+      <module name="device-access" target="1.6" />
+      <module name="device-access-premium" target="1.6" />
+      <module name="device-bridge" target="1.6" />
+      <module name="device-discovery" target="1.6" />
+      <module name="device-manager" target="1.6" />
+      <module name="device-monitor" target="1.5" />
+      <module name="ensemble-admin" target="1.6" />
+      <module name="ensemble-admin-launcher-win32" target="1.6" />
+      <module name="ensemble-app" target="1.5" />
+      <module name="ensemble-bridge-commands" target="1.6" />
+      <module name="ensemble-device-session" target="1.6" />
+      <module name="ensemble-server" target="1.6" />
+      <module name="ensemble-server-app" target="1.5" />
+      <module name="execution-server" target="1.6" />
+      <module name="execution-server-app" target="1.5" />
+      <module name="images" target="1.6" />
+      <module name="latency" target="1.6" />
+      <module name="MAM" target="1.6" />
+      <module name="monitor-server" target="1.6" />
+      <module name="monitor-server-app" target="1.5" />
+      <module name="netmessages" target="1.5" />
+      <module name="notification-server" target="1.6" />
+      <module name="payment-api" target="1.6" />
+      <module name="phonescout" target="1.6" />
+      <module name="portal" target="1.6" />
+      <module name="scripting-api" target="1.6" />
+      <module name="scripting-ui" target="1.6" />
+      <module name="scriptrunner" target="1.6" />
+      <module name="server-common" target="1.6" />
+      <module name="service-runner" target="1.6" />
+      <module name="services" target="1.6" />
+      <module name="services-app" target="1.5" />
+      <module name="studio" target="1.6" />
+      <module name="studio-all" target="1.5" />
+      <module name="studio-all-dev" target="1.5" />
+      <module name="studio-bootstrap" target="1.5" />
+      <module name="studio-launcher-win32" target="1.6" />
+      <module name="studio-premium" target="1.5" />
+      <module name="studio-testcenter" target="1.5" />
+      <module name="test-server" target="1.6" />
+      <module name="test-server-app" target="1.5" />
+      <module name="ui-framework" target="1.6" />
+      <module name="xuggler-wrapper" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

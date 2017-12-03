@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="da-server-web:war">
+    <output-path>C:/Git/projects/da-server/da-server-web/target</output-path>
+    <root id="archive" name="da-server-web.war">
+      <element id="artifact" artifact-name="da-server-web:war exploded" />
+    </root>
+  </artifact>
+</component>

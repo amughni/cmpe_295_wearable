@@ -34,11 +34,12 @@ var isOnline = navigator.onLine;
 //Access_Token = "";
 //Access_Url = "https://********************.api.smartthings.com:443/api/smartapps/"; 
 
-var AccessURL="http://24.4.244.79:8080/access_server_war/rest/smartthings/resource";
+var AccessURL="http://71.198.11.188:8080/rest/smartthings/resource";
+var AlexaURL ="http://71.198.11.188:8080/rest/smartthings/resource/alexa"
 //------------------------------------------------------------------------------------On Page Changes
 document.addEventListener("pageshow", function (e) {
 	if(isOnline==false){
-		//Maybe this should be done each time before an api call is fired incase we lose connection after starting the app..
+		//Maybe this should be done each time before an api call is fired incase we connection after starting the app..
 		//If so, move isOnline = navigator.onLine also
 		alert('No internet connection, please connect first.');
 		tizen.application.getCurrentApplication().exit();
@@ -50,8 +51,8 @@ document.addEventListener("pageshow", function (e) {
 		MainPage();
 	}else if(page == "switchesPage"){
 		SwitchPage();
-//	}else if(page == "routinesPage"){
-//		RoutinesPage();
+	}else if(page == "alexaPage"){
+		AlexaPage();
 	}else if(page == "setupPage"){
 		SetupPage();
 	}
@@ -85,58 +86,86 @@ function MainPage(){
 //			console.log("MainPage() - This page was shown before.");
 //		}
 //	}else{
-		tau.changePage("switchesPage");
+		console.log("Main page loaded");
+		tau.changePage("mainPage");
+		$("#smartHome").click(function(){
+			tau.changePage("switchesPage");
+		});
+		$("#alexa").click(function(){
+			tau.changePage("alexaPage");
+			
+		});
+
 //	}
 }
-//(function(tau) {
-//	var mPage = document.getElementById("mainPage"),
-//		selector = document.getElementById("selector"),
-//		selectorComponent,
-//		clickBound;
-//	//click event handler for the selector
-//	function onClick(event) {
-//		//console.log(event);		
-//		var target = event.target;
-//		if (target.classList.contains("ui-selector-indicator")) {
-//			//console.log("Indicator clicked");
-//			var ItemClicked = event.srcElement.textContent;
-//			console.log("Item Clicked on home page was: " + ItemClicked);
-//
-//			//Handel home page click events
-//			if(ItemClicked == "Switches"){
-//				tau.changePage("switchesPage");
-//			}else if(ItemClicked == "Clear Database"){
-//				//------------------------------------------Clear Database
-//				//This should be moved to it's own function.
-//				console.log("Clearing Database");
-//				localStorage.clear();
-//				Access_Token = null;
-//				Access_Url = null;
-//				switches_DB = null;
-//				alert("Database Cleared");
-//				//Maybe we should exit here?
-//				//------------------------------------------Clear Database
-//			}else if(ItemClicked == "Routines"){
-//				tau.changePage("routinesPage");
-//			}
-//			return;
-//		}
-//	}
-//	//pagebeforeshow event handler
-//	mPage.addEventListener("pagebeforeshow", function() {
-//		clickBound = onClick.bind(null);
-//		selectorComponent = tau.widget.Selector(selector);
-//		selector.addEventListener("click", clickBound, false);
-//	});
-//	//pagebeforehide event handler
-//	mPage.addEventListener("pagebeforehide", function() {
-//		selector.removeEventListener("click", clickBound, false);
-//		selectorComponent.destroy();
-//	});
-//}(window.tau));
-//------------------------------------------------------------------------------------Main Page
 
 //------------------------------------------------------------------------------------Switch Page
+function AlexaPage(){
+	AlexaPageGetData();
+}
+
+function AlexaPageGetData(){
+	console.log("inside ALexaGetData");
+	$("#turnOn").click(function(){
+		tau.openPopup("#turnLightsOn");
+		turnOnLights();
+	});
+	$("#turnOff").click(function() {
+		tau.openPopup("#turnLightsOff");
+		turnOffLights();
+	});
+
+	$("#callmansi").click(function() {
+		tau.openPopup("#callMansi");
+		callMansi();
+	});
+}
+
+function turnOnLights(){
+	console.log("inside turn on lights function");
+	$.ajax({
+		type: "GET" ,
+		url: AlexaURL + "/open",
+		success:function(data){
+			console.log(data);
+		}
+	});
+}
+function turnOffLights(){
+		console.log("inside turn off lights function");
+		$.ajax({
+			type: "GET" ,
+			url: AlexaURL + "/close",
+			success:function(data){
+				console.log(data);
+			}
+		});
+}
+function callMansi(){
+	console.log("inside call Mansi function");
+	$.ajax({
+		type: "GET",
+		url: AlexaURL + "/callmansi",
+		success:function(data){
+			console.log(data);
+		}
+		
+	});
+}
+/* POPUP close */
+   document.getElementById('1btnPopup-cancel').addEventListener('click', function(ev)
+   {
+      tau.closePopup();
+   });
+   document.getElementById('2btnPopup-cancel').addEventListener('click', function(ev)
+		   {
+		      tau.closePopup();
+		   });document.getElementById('30b21.....1......02t1.02nPopup-cancel').addEventListener('click', function(ev)
+				   {
+			      tau.closePopup();
+			   });
+
+
 function SwitchPage(){
 //	console.log("SwitchPage()");
 //	if(SwitchPageRan==true){
@@ -157,7 +186,7 @@ function SwitchPage(){
 }
 
 function SwitchPageGetData(){
-	console.log("inside switchpagetdata");
+	console.log("inside switchpagetdata function");
 	
 	if($('#Switches') == null) {
 		alert("Switches element not found.");
@@ -173,17 +202,18 @@ function SwitchPageGetData(){
 //		self.AppendMyData(data[0].name);
 //	});
 	
-	$.ajax({
-		type: "GET"	,
+	 $.get({
+		/*type: "GET"	,*/
 		url: AccessURL + "/switches",
+		datatype: 'json',
+		cache: 'true',
 		success:function(data){
+			console.log("inside success function");
 			$("#Switches").append ("<li><button id='switch1' + >" + data[0].name + "</button></li>");
 			$("#Switches").append ("<li id='status1'>" + data[0].value + "</li>");
 			
-			
-			
-			 $('#switch1').click(function() {
-				 
+			$('#switch1').click(function() {
+		
 					Switch();
 					
 				});		
@@ -363,6 +393,7 @@ function Decrypt(str) {
         return '';
     }
 }
+
 //------------------------------------------------------------------------------------Encryption Functions
 
 //------------------------------------------------------------------------------------Notes

@@ -32,7 +32,7 @@
 				<div class="ui-content content-padding">
 					<ul class="ui-listview" id="Main Page">	
 					<br>
-					 <li id="smartHome"> Smarthome </li>  
+					 <li id="smartHome"> Smartthings </li>  
 					
 					
 					<li id="alexa" onkeypress="this.bgColor='blue'"> Alexa </li>
@@ -70,8 +70,9 @@
 				<div class="ui-content content-padding">
 					<ul class="ui-listview" id="Switches">	
 					</ul>
+					
 				</div>
-			
+			 <button id="backButton" class="ui-btn">Back</button>
 		</div>	
 		
 <!-- 		<!-- Processing Page
@@ -98,9 +99,16 @@
 			 
 			<ul id='callmansi'> Call Mansi</ul> 
 			 <hr>
+			 <ul id='customAction'> Alexa</ul>
+			 <hr>
 			 
-			
+			<!-- <div>
+			 <input id="customCommand" 	/>
+			 <button id="submit" > Send</button>
+			</div> -->
 			</div>
+			 <button id="backButton2" class="ui-btn">Back</button>
+			
 		</div>
 		
 		
@@ -108,7 +116,7 @@
 		<!--HTML code-->
 <div id="turnLightsOn" class="ui-popup">
       <div class="ui-popup-header">Lights Turned on!</div>
-      <div class="ui-popup-content">
+      <div class="ui-popup-content" id="lightonerror">
       </div>
       <div class="ui-popup-footer">
       <button id="1btnPopup-cancel" class="ui-btn">Back</button>
@@ -118,7 +126,7 @@
 
 <div id="turnLightsOff" class="ui-popup">
       <div class="ui-popup-header">Lights Turned off!</div>
-      <div class="ui-popup-content">
+      <div class="ui-popup-content" id="lightofferror">
       </div>
       <div class="ui-popup-footer">
       <button id="2btnPopup-cancel" class="ui-btn">Back</button>
@@ -127,10 +135,23 @@
 		
 <div id="callMansi" class="ui-popup">
       <div class="ui-popup-header">Calling Mansi!</div>
-      <div class="ui-popup-content">
+      <div class="ui-popup-content" id="callmansierror">
       </div>
       <div class="ui-popup-footer">
       <button id="3btnPopup-cancel" class="ui-btn">Back</button>
+   </div>
+</div>
+		
+<div id="custom-Command" class="ui-popup">
+      <div class="ui-popup-header">Alexa</div>
+      <div class="ui-popup-content">
+      	<input id="customCommand" 	/>
+		<button id="submit" > Send</button>
+      	<br>
+      	<div id="sentCommand"></div>
+      </div>
+      <div class="ui-popup-footer">
+      <button id="4btnPopup-cancel" class="ui-btn">Back</button>
    </div>
 </div>
 

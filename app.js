@@ -34,8 +34,10 @@ var isOnline = navigator.onLine;
 //Access_Token = "";
 //Access_Url = "https://********************.api.smartthings.com:443/api/smartapps/"; 
 
-var AccessURL="http://71.198.11.188:8080/rest/smartthings/resource";
-var AlexaURL ="http://71.198.11.188:8080/rest/smartthings/resource/alexa"
+var AccessURL="ttp://71.198.11.188:8080/rest/smartthings/resource";
+var AlexaURL ="htp://71.198.11.188:8080/rest/smartthings/resource/alexa"
+var customURL = "htp://71.198.11.188:8080/access_server_war/rest/smartthings/resource/alexa-tts"
+var errorMessage = "Error occured: ";
 //------------------------------------------------------------------------------------On Page Changes
 document.addEventListener("pageshow", function (e) {
 	if(isOnline==false){
@@ -119,6 +121,13 @@ function AlexaPageGetData(){
 		tau.openPopup("#callMansi");
 		callMansi();
 	});
+	
+	
+	$("#customAction").click(function(){
+		console.log("inside customAction")
+		customCommand();
+	});
+	
 }
 
 function turnOnLights(){
@@ -128,7 +137,29 @@ function turnOnLights(){
 		url: AlexaURL + "/open",
 		success:function(data){
 			console.log(data);
+		},
+		error:function(jqXHR, exception){
+			console.log("XHR status: " + jqXHR.status);
+			var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("lightonerror").innerHTML = errorMessage + msg;
 		}
+
 	});
 }
 function turnOffLights(){
@@ -138,33 +169,127 @@ function turnOffLights(){
 			url: AlexaURL + "/close",
 			success:function(data){
 				console.log(data);
-			}
+			},
+		error:function(jqXHR, exception){
+			console.log("XHR status: " + jqXHR.status);
+			var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("lightofferror").innerHTML = errorMessage + msg;
+		}
 		});
 }
 function callMansi(){
 	console.log("inside call Mansi function");
 	$.ajax({
 		type: "GET",
-		url: AlexaURL + "/callmansi",
+		url: customURL + "/call%20Mansi",
+	success:function(data){
+		console.log(data);
+	},
+	error:function(jqXHR, exception){
+		console.log("XHR status: " + jqXHR.status);
+		var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("callmansierror").innerHTML = errorMessage + msg;
+		}
+	});
+}
+function customCommand(){
+	tau.openPopup("#custom-Command");
+	console.log("Inside Custom Command popup");
+		$("#submit").click(function(){
+		var str = document.getElementById("customCommand").value;
+		console.log(str);
+		var command = str.replace(/\s/g,"%20");
+		console.log(customURL + "/" + command);
+
+	$.ajax({
+		type: "GET",
+		url: customURL + "/"+ command,
 		success:function(data){
 			console.log(data);
+			document.getElementById("sentCommand").innerHTML = str;
+		},
+		error:function(jqXHR, exception){
+			console.log(jqXHR.status);
+			console.log(exception);
+			var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("sentCommand").innerHTML = errorMessage + msg;
 		}
-		
+	
 	});
+})
+
 }
 /* POPUP close */
    document.getElementById('1btnPopup-cancel').addEventListener('click', function(ev)
    {
-      tau.closePopup();
+	   		tau.closePopup();
    });
    document.getElementById('2btnPopup-cancel').addEventListener('click', function(ev)
-		   {
-		      tau.closePopup();
-		   });document.getElementById('30b21.....1......02t1.02nPopup-cancel').addEventListener('click', function(ev)
-				   {
-			      tau.closePopup();
-			   });
-
+   {
+		    	tau.closePopup();
+   });
+   document.getElementById('3btnPopup-cancel').addEventListener('click', function(ev)
+	{
+	   		tau.closePopup();
+	  });
+   document.getElementById('4btnPopup-cancel').addEventListener('click', function(ev)
+	{
+	   		tau.closePopup();
+	  });
+   document.getElementById('backButton').addEventListener('click',function(ev){
+	   		tau.changePage("mainPage");
+   });
+   document.getElementById('backButton2').addEventListener('click', function(ev) {
+	   		tau.changePage("mainPage");
+   });
 
 function SwitchPage(){
 //	console.log("SwitchPage()");
@@ -185,6 +310,7 @@ function SwitchPage(){
 //	}
 }
 
+
 function SwitchPageGetData(){
 	console.log("inside switchpagetdata function");
 	
@@ -202,25 +328,46 @@ function SwitchPageGetData(){
 //		self.AppendMyData(data[0].name);
 //	});
 	
-	 $.get({
+ $.get({
 		/*type: "GET"	,*/
-		url: AccessURL + "/switches",
-		datatype: 'json',
-		cache: 'true',
-		success:function(data){
-			console.log("inside success function");
-			$("#Switches").append ("<li><button id='switch1' + >" + data[0].name + "</button></li>");
-			$("#Switches").append ("<li id='status1'>" + data[0].value + "</li>");
+	url: AccessURL + "/switches",
+	datatype: 'json',
+	cache: 'true',
+	success:function(data){
+		console.log("inside success function");
+		$("#Switches").append ("<li><button id='switch1' + >" + data[0].name + "</button></li>");
+		$("#Switches").append ("<li id='status1'>" + data[0].value + "</li>");
+		$('#switch1').click(function() {
+		Switch();
+				
+		});		
 			
-			$('#switch1').click(function() {
-		
-					Switch();
-					
-				});		
-			
+	},
+	error:function(jqXHR, exception){
+		console.log(jqXHR.status);
+		console.log(exception);
+		var msg;
+	if (jqXHR.status === 0) {
+	    msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+		document.getElementById("Switches").innerHTML = "Could not get Switches -" + errorMessage + msg;
 		}
-	});
- }
+	
+});
+}
 
  function getNextSwitchValue(current) {
 	 
@@ -245,6 +392,9 @@ function SwitchPageGetData(){
 						
 					
 				}
+			},
+			error:function(error){
+				console.log("ERROR: Can't get switch status");
 			}
 		});
  }

@@ -169,6 +169,18 @@ public class SmartThingsResource {
     @GET
     @Path("alexa-tts/{command}")
     public String alexaTTS(final @PathParam("command") String command) {
+        return processCommand(command, "Alexa! ");
+    }
+
+    /**
+     * Generic to support other voice devices like Google voice etc*/
+    @GET
+    @Path("voice/{type}/{command}")
+    public String alexa(final @PathParam("type") String type , final @PathParam("command") String command) {
+        return processCommand(command, type);
+    }
+
+    private String processCommand(String command, String type) {
         MaryInterface mary = (MaryInterface) applicationContext.getAttribute("mary-interface-instance");
 
         if (mary == null) {
@@ -189,7 +201,7 @@ public class SmartThingsResource {
 
         new Thread(() -> {
             try {
-                AudioInputStream audioInputStream = finalMary.generateAudio("Alexa! " + command + "!");
+                AudioInputStream audioInputStream = finalMary.generateAudio(type + command + "!");
 
                 Clip clip = AudioSystem.getClip();
 
@@ -265,4 +277,6 @@ public class SmartThingsResource {
         }
         return outputBuilder.toString();
     }
+
+
 }

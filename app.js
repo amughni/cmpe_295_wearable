@@ -34,11 +34,14 @@ var isOnline = navigator.onLine;
 //Access_Token = "";
 //Access_Url = "https://********************.api.smartthings.com:443/api/smartapps/"; 
 
-var AccessURL="http://24.4.244.79:8080/access_server_war/rest/smartthings/resource";
+var AccessURL="ttp://71.198.11.188:8080/rest/smartthings/resource";
+var AlexaURL ="htp://71.198.11.188:8080/rest/smartthings/resource/alexa"
+var customURL = "htp://71.198.11.188:8080/access_server_war/rest/smartthings/resource/alexa-tts"
+var errorMessage = "Error occured: ";
 //------------------------------------------------------------------------------------On Page Changes
 document.addEventListener("pageshow", function (e) {
 	if(isOnline==false){
-		//Maybe this should be done each time before an api call is fired incase we lose connection after starting the app..
+		//Maybe this should be done each time before an api call is fired incase we connection after starting the app..
 		//If so, move isOnline = navigator.onLine also
 		alert('No internet connection, please connect first.');
 		tizen.application.getCurrentApplication().exit();
@@ -50,8 +53,8 @@ document.addEventListener("pageshow", function (e) {
 		MainPage();
 	}else if(page == "switchesPage"){
 		SwitchPage();
-//	}else if(page == "routinesPage"){
-//		RoutinesPage();
+	}else if(page == "alexaPage"){
+		AlexaPage();
 	}else if(page == "setupPage"){
 		SetupPage();
 	}
@@ -85,58 +88,209 @@ function MainPage(){
 //			console.log("MainPage() - This page was shown before.");
 //		}
 //	}else{
-		tau.changePage("switchesPage");
+		console.log("Main page loaded");
+		tau.changePage("mainPage");
+		$("#smartHome").click(function(){
+			tau.changePage("switchesPage");
+		});
+		$("#alexa").click(function(){
+			tau.changePage("alexaPage");
+			
+		});
+
 //	}
 }
-//(function(tau) {
-//	var mPage = document.getElementById("mainPage"),
-//		selector = document.getElementById("selector"),
-//		selectorComponent,
-//		clickBound;
-//	//click event handler for the selector
-//	function onClick(event) {
-//		//console.log(event);		
-//		var target = event.target;
-//		if (target.classList.contains("ui-selector-indicator")) {
-//			//console.log("Indicator clicked");
-//			var ItemClicked = event.srcElement.textContent;
-//			console.log("Item Clicked on home page was: " + ItemClicked);
-//
-//			//Handel home page click events
-//			if(ItemClicked == "Switches"){
-//				tau.changePage("switchesPage");
-//			}else if(ItemClicked == "Clear Database"){
-//				//------------------------------------------Clear Database
-//				//This should be moved to it's own function.
-//				console.log("Clearing Database");
-//				localStorage.clear();
-//				Access_Token = null;
-//				Access_Url = null;
-//				switches_DB = null;
-//				alert("Database Cleared");
-//				//Maybe we should exit here?
-//				//------------------------------------------Clear Database
-//			}else if(ItemClicked == "Routines"){
-//				tau.changePage("routinesPage");
-//			}
-//			return;
-//		}
-//	}
-//	//pagebeforeshow event handler
-//	mPage.addEventListener("pagebeforeshow", function() {
-//		clickBound = onClick.bind(null);
-//		selectorComponent = tau.widget.Selector(selector);
-//		selector.addEventListener("click", clickBound, false);
-//	});
-//	//pagebeforehide event handler
-//	mPage.addEventListener("pagebeforehide", function() {
-//		selector.removeEventListener("click", clickBound, false);
-//		selectorComponent.destroy();
-//	});
-//}(window.tau));
-//------------------------------------------------------------------------------------Main Page
 
 //------------------------------------------------------------------------------------Switch Page
+function AlexaPage(){
+	AlexaPageGetData();
+}
+
+function AlexaPageGetData(){
+	console.log("inside ALexaGetData");
+	$("#turnOn").click(function(){
+		tau.openPopup("#turnLightsOn");
+		turnOnLights();
+	});
+	$("#turnOff").click(function() {
+		tau.openPopup("#turnLightsOff");
+		turnOffLights();
+	});
+
+	$("#callmansi").click(function() {
+		tau.openPopup("#callMansi");
+		callMansi();
+	});
+	
+	
+	$("#customAction").click(function(){
+		console.log("inside customAction")
+		customCommand();
+	});
+	
+}
+
+function turnOnLights(){
+	console.log("inside turn on lights function");
+	$.ajax({
+		type: "GET" ,
+		url: AlexaURL + "/open",
+		success:function(data){
+			console.log(data);
+		},
+		error:function(jqXHR, exception){
+			console.log("XHR status: " + jqXHR.status);
+			var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("lightonerror").innerHTML = errorMessage + msg;
+		}
+
+	});
+}
+function turnOffLights(){
+		console.log("inside turn off lights function");
+		$.ajax({
+			type: "GET" ,
+			url: AlexaURL + "/close",
+			success:function(data){
+				console.log(data);
+			},
+		error:function(jqXHR, exception){
+			console.log("XHR status: " + jqXHR.status);
+			var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("lightofferror").innerHTML = errorMessage + msg;
+		}
+		});
+}
+function callMansi(){
+	console.log("inside call Mansi function");
+	$.ajax({
+		type: "GET",
+		url: customURL + "/call%20Mansi",
+	success:function(data){
+		console.log(data);
+	},
+	error:function(jqXHR, exception){
+		console.log("XHR status: " + jqXHR.status);
+		var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("callmansierror").innerHTML = errorMessage + msg;
+		}
+	});
+}
+function customCommand(){
+	tau.openPopup("#custom-Command");
+	console.log("Inside Custom Command popup");
+		$("#submit").click(function(){
+		var str = document.getElementById("customCommand").value;
+		console.log(str);
+		var command = str.replace(/\s/g,"%20");
+		console.log(customURL + "/" + command);
+
+	$.ajax({
+		type: "GET",
+		url: customURL + "/"+ command,
+		success:function(data){
+			console.log(data);
+			document.getElementById("sentCommand").innerHTML = str;
+		},
+		error:function(jqXHR, exception){
+			console.log(jqXHR.status);
+			console.log(exception);
+			var msg;
+		if (jqXHR.status === 0) {
+            msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+			document.getElementById("sentCommand").innerHTML = errorMessage + msg;
+		}
+	
+	});
+})
+
+}
+/* POPUP close */
+   document.getElementById('1btnPopup-cancel').addEventListener('click', function(ev)
+   {
+	   		tau.closePopup();
+   });
+   document.getElementById('2btnPopup-cancel').addEventListener('click', function(ev)
+   {
+		    	tau.closePopup();
+   });
+   document.getElementById('3btnPopup-cancel').addEventListener('click', function(ev)
+	{
+	   		tau.closePopup();
+	  });
+   document.getElementById('4btnPopup-cancel').addEventListener('click', function(ev)
+	{
+	   		tau.closePopup();
+	  });
+   document.getElementById('backButton').addEventListener('click',function(ev){
+	   		tau.changePage("mainPage");
+   });
+   document.getElementById('backButton2').addEventListener('click', function(ev) {
+	   		tau.changePage("mainPage");
+   });
+
 function SwitchPage(){
 //	console.log("SwitchPage()");
 //	if(SwitchPageRan==true){
@@ -156,8 +310,9 @@ function SwitchPage(){
 //	}
 }
 
+
 function SwitchPageGetData(){
-	console.log("inside switchpagetdata");
+	console.log("inside switchpagetdata function");
 	
 	if($('#Switches') == null) {
 		alert("Switches element not found.");
@@ -173,24 +328,46 @@ function SwitchPageGetData(){
 //		self.AppendMyData(data[0].name);
 //	});
 	
-	$.ajax({
-		type: "GET"	,
-		url: AccessURL + "/switches",
-		success:function(data){
-			$("#Switches").append ("<li><button id='switch1' + >" + data[0].name + "</button></li>");
-			$("#Switches").append ("<li id='status1'>" + data[0].value + "</li>");
+ $.get({
+		/*type: "GET"	,*/
+	url: AccessURL + "/switches",
+	datatype: 'json',
+	cache: 'true',
+	success:function(data){
+		console.log("inside success function");
+		$("#Switches").append ("<li><button id='switch1' + >" + data[0].name + "</button></li>");
+		$("#Switches").append ("<li id='status1'>" + data[0].value + "</li>");
+		$('#switch1').click(function() {
+		Switch();
+				
+		});		
 			
-			
-			
-			 $('#switch1').click(function() {
-				 
-					Switch();
-					
-				});		
-			
+	},
+	error:function(jqXHR, exception){
+		console.log(jqXHR.status);
+		console.log(exception);
+		var msg;
+	if (jqXHR.status === 0) {
+	    msg = 'Not connected.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+
+		document.getElementById("Switches").innerHTML = "Could not get Switches -" + errorMessage + msg;
 		}
-	});
- }
+	
+});
+}
 
  function getNextSwitchValue(current) {
 	 
@@ -215,6 +392,9 @@ function SwitchPageGetData(){
 						
 					
 				}
+			},
+			error:function(error){
+				console.log("ERROR: Can't get switch status");
 			}
 		});
  }
@@ -363,6 +543,7 @@ function Decrypt(str) {
         return '';
     }
 }
+
 //------------------------------------------------------------------------------------Encryption Functions
 
 //------------------------------------------------------------------------------------Notes
